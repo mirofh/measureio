@@ -27,9 +27,7 @@ public class MeasureIO {
         return m;
     }
 
-    void runAndPrintToCSV() {
-        long maxSize = (long) Math.pow(2, 28);
-
+    void runAndPrintToCSV(long maxSize) {
         TreeMap<String, TreeMap<Integer, Long>> m = new TreeMap<>();
 
         m.put("WriteToFile", getTime(maxSize, new WriteToFile()));
@@ -58,7 +56,14 @@ public class MeasureIO {
 
     public static void main(String[] args) {
         MeasureIO m = new MeasureIO();
-        m.runAndPrintToCSV();
+
+        // default is 1 MB
+        long maxSize = (long) Math.pow(2, 20) + 1L;
+        if (args.length > 0) {
+            maxSize = Long.parseLong(args[0]) + 1L;
+        }
+
+        m.runAndPrintToCSV(maxSize);
     }
 
 }
