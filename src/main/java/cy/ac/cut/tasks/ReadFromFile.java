@@ -18,6 +18,11 @@ public class ReadFromFile implements MeasureTask {
     }
 
     @Override
+    public String getName() {
+        return "ReadFromFile";
+    }
+
+    @Override
     public void setup() {
         this.tmpDir = System.getProperty("user.dir") + "/readFromFile/";
 

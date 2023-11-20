@@ -27,6 +27,11 @@ public class WriteToFile implements MeasureTask {
     }
 
     @Override
+    public String getName() {
+        return "WriteToFile";
+    }
+
+    @Override
     public void setup() {
         this.tmpDir = System.getProperty("user.dir") + "/writeToFile/";
 

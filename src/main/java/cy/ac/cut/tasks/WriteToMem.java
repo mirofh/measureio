@@ -11,6 +11,10 @@ public class WriteToMem implements MeasureTask {
         setup();
     }
 
+    @Override
+    public String getName() {
+        return "WriteToMem";
+    }
 
     @Override
     public void setup() {

@@ -5,6 +5,8 @@ package cy.ac.cut.tasks;
  */
 public interface MeasureTask {
 
+    String getName();
+
     void setup();
 
     // returns the time to run the task

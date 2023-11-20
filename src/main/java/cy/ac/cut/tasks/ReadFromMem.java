@@ -12,6 +12,11 @@ public class ReadFromMem implements MeasureTask {
     }
 
     @Override
+    public String getName() {
+        return "ReadFromMem";
+    }
+
+    @Override
     public void setup() {
     }
 
