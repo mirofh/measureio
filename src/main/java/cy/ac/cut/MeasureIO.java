@@ -18,11 +18,11 @@ public class MeasureIO {
     TreeMap<Integer, Long> getTime (long amountOfData, MeasureTask task) {
         TreeMap<Integer, Long> m = new TreeMap<>();
         long runtime = 0L;
-        System.out.println("AmountOfData," + task.getName());
+        // System.out.println("AmountOfData," + task.getName());
         for (int i=2; i<amountOfData; i*=2) {
             runtime = task.run(i);
             m.put(i, runtime);
-            System.out.println(i + "," + runtime);
+            // System.out.println(i + "," + runtime);
         }
         return m;
     }

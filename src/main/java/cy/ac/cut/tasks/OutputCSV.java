@@ -12,7 +12,7 @@ public class OutputCSV {
 
         File file = new File(path);
         if (file.exists()) {
-            System.out.println("Rewriting output file " + file);
+            // System.out.println("Rewriting output file " + file);
         }
 
         try {
