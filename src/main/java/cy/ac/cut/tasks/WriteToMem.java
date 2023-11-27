@@ -22,10 +22,12 @@ public class WriteToMem implements MeasureTask {
 
     @Override
     public long run(long sizeInBytes) {
-        byte[] data = MeasureUtils.generateRandomData(sizeInBytes);
+        byte[][] data = MeasureUtils.generateRandomData(sizeInBytes);
         long beginTime = System.nanoTime();
         // fill with mock value
-        Arrays.fill(data, (byte) 10L);
+        for (int i=0; i<data.length; i++) {
+            Arrays.fill(data[i], (byte) 10L);
+        }
         return  System.nanoTime() - beginTime;
     }
 

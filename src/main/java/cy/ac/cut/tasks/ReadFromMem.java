@@ -22,11 +22,17 @@ public class ReadFromMem implements MeasureTask {
 
     @Override
     public long run(long sizeInBytes) {
-        byte[] data = MeasureUtils.generateRandomData(sizeInBytes);
-        Arrays.fill(data, (byte) 10L);
+        byte[][] data = MeasureUtils.generateRandomData(sizeInBytes);
+        for (int i=0; i<data.length; i++) {
+            Arrays.fill(data[i], (byte) 10L);
+        }
 
         long beginTime = System.nanoTime();
-        byte[] bytesToRead = new byte[(int) sizeInBytes];
+
+        byte[][] bytesToRead = new byte[data.length][];
+        for (int i=0; i<data.length; i++) {
+            bytesToRead[i] = new byte[(int) sizeInBytes];
+        }
         return  System.nanoTime() - beginTime;
     }
 

@@ -52,7 +52,7 @@ public class WriteToFile implements MeasureTask {
         Path filePath = getNewFileName();
 
         // creates byte stream
-        byte[] data = MeasureUtils.generateRandomData(sizeInBytes);
+        byte[][] data = MeasureUtils.generateRandomData(sizeInBytes);
 
         long beginTime = System.nanoTime();
         long totalTime = 0L;
@@ -61,7 +61,9 @@ public class WriteToFile implements MeasureTask {
         FileOutputStream fos;
         try  {
             fos = new FileOutputStream(filePath.toString());
-            fos.write(data);
+            for (int i=0; i<data.length; i++) {
+                fos.write(data[i]);
+            }
             totalTime = System.nanoTime() - beginTime;
         fos.close();
         } catch (IOException e) {

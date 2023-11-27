@@ -45,11 +45,13 @@ public class ReadFromFile implements MeasureTask {
         return Paths.get(tmpDir, sizeInBytes + "-read.bin");
     }
 
-    private void writeToFile(Path filePath, byte[] data) {
+    private void writeToFile(Path filePath, byte[][] data) {
         FileOutputStream fos;
         try  {
             fos = new FileOutputStream(filePath.toString());
-            fos.write(data);
+            for (int i=0; i<data.length; i++) {
+                fos.write(data[i]);
+            }
             fos.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,7 +76,7 @@ public class ReadFromFile implements MeasureTask {
     @Override
     public long run(long sizeInBytes) {
         Path filePath = getNewFileName(sizeInBytes);
-        byte[] data = MeasureUtils.generateRandomData(sizeInBytes);
+        byte[][] data = MeasureUtils.generateRandomData(sizeInBytes);
         if (!Files.exists(filePath)) {
             writeToFile(filePath, data);
         }
